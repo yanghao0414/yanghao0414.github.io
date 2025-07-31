@@ -38,6 +38,32 @@
             }
         }
     </style>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .transition-custom {
+                transition: all 0.3s ease;
+            }
+            .animate-fade-in {
+                animation: fadeIn 0.5s ease-in-out;
+            }
+            .animate-on-scroll {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            }
+            .animate-on-scroll.animated {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+        }
+    </style>
 </head>
 <body class="bg-light text-dark font-sans">
     <!-- 导航栏 -->
@@ -86,7 +112,7 @@
     </header>
 
     <!-- 英雄区域 -->
-    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-br from-primary/5 to-secondary/5">
+    <section id="home" class="py-16 md:py-24 bg-gradient-to-br from-primary/5 to-secondary/5 animate-on-scroll">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 md:pr-12 mb-10 md:mb-0">
@@ -139,7 +165,7 @@
     </section>
 
     <!-- 成长问题分类 -->
-    <section id="issues" class="py-16 md:py-24 bg-white">
+    <section id="issues" class="py-16 md:py-24 bg-white animate-on-scroll">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">常见成长问题</h2>
@@ -150,7 +176,7 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- 问题卡片 1 -->
-                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden group">
+                <div class="problem-card bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden group">
                     <div class="h-48 overflow-hidden">
                         <img src="https://picsum.photos/id/201/600/400" alt="学业压力" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
@@ -164,14 +190,14 @@
                         <p class="text-neutral mb-4">
                             如何平衡学习与休息，应对考试焦虑，建立有效的学习方法，提升学习效率。
                         </p>
-                        <a href="#" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
+                        <a href="problem-detail.html?id=social" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
                             了解更多 <i class="fa fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- 问题卡片 2 -->
-                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden group">
+                <div class="problem-card bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden group">
                     <div class="h-48 overflow-hidden">
                         <img src="https://picsum.photos/id/1027/600/400" alt="情绪管理" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
@@ -185,14 +211,14 @@
                         <p class="text-neutral mb-4">
                             认识和接纳自己的情绪，学习有效的情绪调节方法，应对压力、焦虑和抑郁等情绪问题。
                         </p>
-                        <a href="#" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
+                        <a href="problem-detail.html?id=emotion" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
                             了解更多 <i class="fa fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- 问题卡片 3 -->
-                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden group">
+                <div class="problem-card bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden group">
                     <div class="h-48 overflow-hidden">
                         <img src="https://picsum.photos/id/1074/600/400" alt="社交关系" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
@@ -206,14 +232,14 @@
                         <p class="text-neutral mb-4">
                             建立健康的人际关系，处理同伴压力，解决冲突，提升沟通能力和人际交往技巧。
                         </p>
-                        <a href="#" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
+                        <a href="problem-detail.html?id=social" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
                             了解更多 <i class="fa fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- 问题卡片 4 -->
-                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden group">
+                <div class="problem-card bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden group">
                     <div class="h-48 overflow-hidden">
                         <img src="https://picsum.photos/id/1080/600/400" alt="家庭沟通" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
@@ -227,14 +253,14 @@
                         <p class="text-neutral mb-4">
                             改善与父母的沟通，理解家庭角色变化，处理家庭冲突，建立相互尊重的家庭关系。
                         </p>
-                        <a href="#" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
+                        <a href="problem-detail.html?id=family" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
                             了解更多 <i class="fa fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- 问题卡片 5 -->
-                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden group">
+                <div class="problem-card bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden group">
                     <div class="h-48 overflow-hidden">
                         <img src="https://picsum.photos/id/1062/600/400" alt="自我认知" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
@@ -248,14 +274,14 @@
                         <p class="text-neutral mb-4">
                             认识自己的兴趣、优势和价值观，建立自信，设定人生目标，规划未来发展方向。
                         </p>
-                        <a href="#" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
+                        <a href="problem-detail.html?id=self" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
                             了解更多 <i class="fa fa-arrow-right ml-2"></i>
                         </a>
                     </div>
                 </div>
 
                 <!-- 问题卡片 6 -->
-                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden group">
+                <div class="problem-card bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden group">
                     <div class="h-48 overflow-hidden">
                         <img src="https://picsum.photos/id/1059/600/400" alt="网络使用" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
@@ -269,7 +295,28 @@
                         <p class="text-neutral mb-4">
                             合理安排上网时间，识别网络风险，避免网络沉迷，保护个人信息和网络安全。
                         </p>
-                        <a href="#" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
+                        <a href="problem-detail.html?id=internet" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
+                            了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 问题卡片 7: 学业压力 -->
+                <div class="problem-card bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/1067/600/400" alt="学业压力" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-600">
+                                <i class="fa fa-book"></i>
+                            </div>
+                            <h3 class="ml-3 text-xl font-semibold text-dark">学业压力</h3>
+                        </div>
+                        <p class="text-neutral mb-4">
+                            应对学习压力，提高学习效率，平衡学业与生活，建立健康的学习心态和习惯。
+                        </p>
+                        <a href="problem-detail.html?id=academic" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
                             了解更多 <i class="fa fa-arrow-right ml-2"></i>
                         </a>
                     </div>
@@ -279,7 +326,7 @@
     </section>
 
     <!-- 互动工具区域 -->
-    <section id="tools" class="py-16 md:py-24 bg-gray-50">
+    <section id="tools" class="py-16 md:py-24 bg-gray-50 animate-on-scroll">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">互动成长工具</h2>
@@ -290,7 +337,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- 工具卡片 1 -->
-                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom overflow-hidden flex flex-col md:flex-row">
+                <div class="tool-card bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden flex flex-col md:flex-row">
                     <div class="md:w-2/5 h-48 md:h-auto">
                         <img src="https://picsum.photos/id/1048/400/600" alt="情绪测评" class="w-full h-full object-cover">
                     </div>
@@ -306,7 +353,7 @@
                 </div>
 
                 <!-- 工具卡片 2 -->
-                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom overflow-hidden flex flex-col md:flex-row">
+                <div class="tool-card bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden flex flex-col md:flex-row">
                     <div class="md:w-2/5 h-48 md:h-auto">
                         <img src="https://picsum.photos/id/1058/400/600" alt="成长规划" class="w-full h-full object-cover">
                     </div>
@@ -322,7 +369,7 @@
                 </div>
 
                 <!-- 工具卡片 3 -->
-                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom overflow-hidden flex flex-col md:flex-row">
+                <div class="tool-card bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden flex flex-col md:flex-row">
                     <div class="md:w-2/5 h-48 md:h-auto">
                         <img src="https://picsum.photos/id/1055/400/600" alt="沟通模拟器" class="w-full h-full object-cover">
                     </div>
@@ -338,7 +385,7 @@
                 </div>
 
                 <!-- 工具卡片 4 -->
-                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom overflow-hidden flex flex-col md:flex-row">
+                <div class="tool-card bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden flex flex-col md:flex-row">
                     <div class="md:w-2/5 h-48 md:h-auto">
                         <img src="https://picsum.photos/id/1071/400/600" alt="压力管理" class="w-full h-full object-cover">
                     </div>
@@ -357,7 +404,7 @@
     </section>
 
     <!-- 资源库区域 -->
-    <section id="resources" class="py-16 md:py-24 bg-white">
+    <section id="resources" class="py-16 md:py-24 bg-white animate-on-scroll">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">成长资源库</h2>
@@ -499,7 +546,7 @@
     </section>
 
     <!-- 寻求帮助区域 -->
-    <section id="contact" class="py-16 md:py-24 bg-gradient-to-br from-primary/5 to-secondary/5">
+    <section id="contact" class="py-16 md:py-24 bg-gradient-to-br from-primary/5 to-secondary/5 animate-on-scroll">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
                 <div class="flex flex-col md:flex-row">
@@ -579,7 +626,7 @@
     </section>
 
     <!-- 关于我们区域 -->
-    <section id="about" class="py-16 md:py-24 bg-white">
+    <section id="about" class="py-16 md:py-24 bg-white animate-on-scroll">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 md:pr-12 mb-10 md:mb-0">
@@ -646,7 +693,7 @@
                         <span class="text-xl font-bold">成长导航</span>
                     </div>
                     <p class="text-gray-400 mb-4">
-                        陪伴青少年健康成长的专业平台，提供科学的指导和支持。
+                        陪伴青少年acee健健成长的专业平台，提供科学的指导和支持。
                     </p>
                     <div class="flex space-x-4">
                         <a href="#" class="text-gray-400 hover:text-white transition-custom">

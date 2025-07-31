@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成长问题详情 - 成长导航</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#10b981',
+                        accent: '#f59e0b',
+                        dark: '#1e293b',
+                        neutral: '#64748b'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .transition-custom {
+                transition: all 0.3s ease;
+            }
+            .animate-fade-in {
+                animation: fadeIn 0.5s ease-in-out;
+            }
+            .animate-on-scroll {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            }
+            .animate-on-scroll.animated {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body class="font-inter text-dark bg-gray-50">
+    <!-- 导航栏 -->
+    <nav id="navbar" class="fixed w-full top-0 left-0 bg-white shadow-sm transition-all duration-300 z-40">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <i class="fa fa-leaf text-primary text-2xl"></i>
+                    <span class="text-xl font-bold text-primary">成长导航</span>
+                </div>
+
+                <!-- 桌面端导航菜单 -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="font-medium hover:text-primary transition-custom">首页</a>
+                    <a href="#problems" class="font-medium text-primary border-b-2 border-primary pb-1">成长问题</a>
+                    <a href="index.html#tools" class="font-medium hover:text-primary transition-custom">互动工具</a>
+                    <a href="index.html#resources" class="font-medium hover:text-primary transition-custom">资源库</a>
+                    <a href="index.html#contact" class="font-medium hover:text-primary transition-custom">联系我们</a>
+                </div>
+
+                <!-- 移动端菜单按钮 -->
+                <button id="menu-toggle" class="md:hidden text-dark focus:outline-none">
+                    <i class="fa fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg animate-fade-in">
+            <div class="container mx-auto px-4 py-4 space-y-4">
+                <a href="index.html" class="block font-medium hover:text-primary transition-custom">首页</a>
+                <a href="#problems" class="block font-medium text-primary">成长问题</a>
+                <a href="index.html#tools" class="block font-medium hover:text-primary transition-custom">互动工具</a>
+                <a href="index.html#resources" class="block font-medium hover:text-primary transition-custom">资源库</a>
+                <a href="index.html#contact" class="block font-medium hover:text-primary transition-custom">联系我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="pt-20 pb-16">
+        <!-- 问题详情区域 -->
+        <section id="problem-detail" class="py-12 md:py-20 bg-white animate-on-scroll">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto">
+                    <!-- 面包屑导航 -->
+                    <div class="flex items-center text-sm text-neutral mb-8">
+                        <a href="index.html" class="hover:text-primary transition-custom">首页</a>
+                        <i class="fa fa-chevron-right mx-2 text-xs"></i>
+                        <a href="index.html#problems" class="hover:text-primary transition-custom">成长问题</a>
+                        <i class="fa fa-chevron-right mx-2 text-xs"></i>
+                        <span id="problem-breadcrumb" class="text-primary">情绪管理</span>
+                    </div>
+
+                    <!-- 问题标题 -->
+                    <h1 id="problem-title" class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-6">情绪管理</h1>
+
+                    <!-- 问题图标和分类 -->
+                    <div class="flex items-center mb-8" id="problem-icon-container">
+                        <div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary text-xl">
+                            <i class="fa fa-heart"></i>
+                        </div>
+                        <div class="ml-4">
+                            <span class="inline-block px-3 py-1 bg-secondary/10 text-secondary text-sm rounded-full" id="problem-category">心理健康</span>
+                        </div>
+                    </div>
+
+                    <!-- 问题描述 -->
+                    <div class="prose prose-lg max-w-none mb-10" id="problem-description">
+                        <p class="text-lg text-neutral mb-6">
+                            情绪管理是青少年成长过程中至关重要的一项能力。它指的是识别、理解和有效调节自己情绪的能力，以及在面对压力、挫折和冲突时保持情绪稳定的能力。
+                        </p>
+                        <p class="text-lg text-neutral mb-6">
+                            青少年正处于身心快速发展的时期，激素水平的变化、学业压力的增加、人际关系的复杂化等因素，都可能导致情绪波动较大。如果缺乏有效的情绪管理能力，可能会出现焦虑、抑郁、冲动行为等问题，影响身心健康和社会适应能力。
+                        </p>
+                    </div>
+
+                    <!-- 常见表现 -->
+                    <div class="bg-gray-50 rounded-xl p-6 mb-10 animate-on-scroll">
+                        <h2 class="text-xl font-bold text-dark mb-4 flex items-center">
+                            <i class="fa fa-exclamation-circle text-accent mr-2"></i> 常见表现
+                        </h2>
+                        <ul class="space-y-3" id="problem-symptoms">
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span class="text-neutral">情绪波动大，容易从兴奋转为沮丧</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span class="text-neutral">对小事反应过度，容易发脾气或哭泣</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span class="text-neutral">长期感到焦虑、紧张或担忧</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span class="text-neutral">兴趣减退，对以前喜欢的事情不再热衷</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>
+                                <span class="text-neutral">睡眠问题，如失眠或过度睡眠</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 应对策略 -->
+                    <div class="mb-10 animate-on-scroll">
+                        <h2 class="text-xl font-bold text-dark mb-4 flex items-center">
+                            <i class="fa fa-lightbulb text-primary mr-2"></i> 应对策略
+                        </h2>
+                        <div class="space-y-6" id="problem-strategies">
+                            <div class="bg-white border border-gray-100 rounded-lg p-5 shadow-sm hover:shadow-md transition-custom">
+                                <h3 class="font-semibold text-lg text-dark mb-2">识别和接纳情绪</h3>
+                                <p class="text-neutral">\                                    首先要学会识别自己的情绪，给情绪命名（如愤怒、焦虑、悲伤等），并接纳这些情绪的存在。情绪没有好坏之分，每一种情绪都是内心的信号，告诉我们需要关注什么。\                                </p>
+                            </div>
+                            <div class="bg-white border border-gray-100 rounded-lg p-5 shadow-sm hover:shadow-md transition-custom">
+                                <h3 class="font-semibold text-lg text-dark mb-2">深呼吸和放松练习</h3>
+                                <p class="text-neutral">\                                    当情绪激动时，可以尝试深呼吸练习：慢慢吸气4秒，屏住呼吸2秒，然后慢慢呼气6秒。重复几次，可以帮助平静情绪。此外，渐进式肌肉放松、冥想等方法也有助于缓解紧张和焦虑。\                                </p>
+                            </div>
+                            <div class="bg-white border border-gray-100 rounded-lg p-5 shadow-sm hover:shadow-md transition-custom">
+                                <h3 class="font-semibold text-lg text-dark mb-2">积极的自我对话</h3>
+                                <p class="text-neutral">\                                    注意自己的内心对话，用积极、理性的想法取代消极、非理性的想法。例如，把"我做不好"改为"我可以尝试，即使失败也是学习的机会"。\                                </p>
+                            </div>
+                            <div class="bg-white border border-gray-100 rounded-lg p-5 shadow-sm hover:shadow-md transition-custom">
+                                <h3 class="font-semibold text-lg text-dark mb-2">寻找支持</h3>
+                                <p class="text-neutral">\                                    不要独自承受情绪压力，寻找信任的人（如父母、老师、朋友）倾诉，或者寻求专业的心理咨询帮助。分享和支持可以帮助我们更好地应对情绪挑战。\                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 相关资源 -->
+                    <div class="animate-on-scroll">
+                        <h2 class="text-xl font-bold text-dark mb-4 flex items-center">
+                            <i class="fa fa-book text-accent mr-2"></i> 相关资源
+                        </h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6" id="related-resources">
+                            <a href="index.html#resources" class="block bg-white border border-gray-100 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-custom group">
+                                <div class="h-40 overflow-hidden">
+                                    <img src="https://picsum.photos/id/1059/600/400" alt="情绪管理书籍" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                </div>
+                                <div class="p-4">
+                                    <h3 class="font-semibold text-dark mb-1">《我的情绪小怪兽》</h3>
+                                    <p class="text-sm text-neutral mb-2">适合青少年的情绪管理绘本</p>
+                                    <span class="inline-flex items-center text-primary text-sm font-medium">\                                        查看详情 <i class="fa fa-arrow-right ml-1"></i>\                                    </span>
+                                </div>
+                            </a>
+                            <a href="index.html#tools" class="block bg-white border border-gray-100 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-custom group">
+                                <div class="h-40 overflow-hidden">
+                                    <img src="https://picsum.photos/id/1048/600/400" alt="情绪测评工具" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                </div>
+                                <div class="p-4">
+                                    <h3 class="font-semibold text-dark mb-1">情绪健康测评</h3>
+                                    <p class="text-sm text-neutral mb-2">专业量表评估你的情绪状态</p>
+                                    <span class="inline-flex items-center text-primary text-sm font-medium">\                                        开始测评 <i class="fa fa-arrow-right ml-1"></i>\                                    </span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white pt-16 pb-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fa fa-leaf text-primary text-2xl"></i>
+                        <span class="text-xl font-bold text-white">成长导航</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">\                        专注于青少年成长的全方位支持平台，帮助青少年健康成长，快乐学习。\                    </p>
+                    <div class="flex space-x-4">\                        <a href="#" class="text-gray-400 hover:text-primary transition-custom"><i class="fa fa-weixin text-xl"></i></a>\                        <a href="#" class="text-gray-400 hover:text-primary transition-custom"><i class="fa fa-weibo text-xl"></i></a>\                        <a href="#" class="text-gray-400 hover:text-primary transition-custom"><i class="fa fa-qq text-xl"></i></a>\                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">快速链接</h3>
+                    <ul class="space-y-2">\                        <li><a href="index.html" class="text-gray-400 hover:text-primary transition-custom">首页</a></li>\                        <li><a href="index.html#problems" class="text-gray-400 hover:text-primary transition-custom">成长问题</a></li>\                        <li><a href="index.html#tools" class="text-gray-400 hover:text-primary transition-custom">互动工具</a></li>\                        <li><a href="index.html#resources" class="text-gray-400 hover:text-primary transition-custom">资源库</a></li>\                        <li><a href="index.html#contact" class="text-gray-400 hover:text-primary transition-custom">联系我们</a></li>\                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">帮助中心</h3>
+                    <ul class="space-y-2">\                        <li><a href="#" class="text-gray-400 hover:text-primary transition-custom">常见问题</a></li>\                        <li><a href="#" class="text-gray-400 hover:text-primary transition-custom">使用指南</a></li>\                        <li><a href="#" class="text-gray-400 hover:text-primary transition-custom">隐私政策</a></li>\                        <li><a href="#" class="text-gray-400 hover:text-primary transition-custom">用户协议</a></li>\                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">订阅通讯</h3>
+                    <p class="text-gray-400 mb-4">\                        订阅我们的通讯，获取最新的成长资讯和活动信息。\                    </p>
+                    <form class="flex">\                        <input type="email" placeholder="输入你的邮箱" class="px-4 py-2 rounded-l-lg focus:outline-none text-dark w-full">\                        <button type="submit" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-r-lg transition-custom">\                            <i class="fa fa-paper-plane"></i>\                        </button>\                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500">\                <p>&copy; 2023 成长导航 版权所有</p>\            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 z-50">\        <i class="fa fa-arrow-up"></i>\    </button>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    <script>
+        // 问题详情页特定脚本
+        document.addEventListener('DOMContentLoaded', () => {
+            // 从URL获取问题ID
+            const urlParams = new URLSearchParams(window.location.search);
+            const problemId = urlParams.get('id');
+
+            // 根据问题ID加载不同的问题内容
+            if (problemId) {
+                loadProblemDetail(problemId);
+            }
+
+            function loadProblemDetail(id) {
+                // 问题数据
+                const problems = {
+                    'emotion': {
+                        title: '情绪管理',
+                        breadcrumb: '情绪管理',
+                        icon: 'fa-heart',
+                        iconColor: 'secondary',
+                        category: '心理健康',
+                        description: `\                            <p class="text-lg text-neutral mb-6">\                                情绪管理是青少年成长过程中至关重要的一项能力。它指的是识别、理解和有效调节自己情绪的能力，以及在面对压力、挫折和冲突时保持情绪稳定的能力。\                            </p>
+                            <p class="text-lg text-neutral mb-6">\                                青少年正处于身心快速发展的时期，激素水平的变化、学业压力的增加、人际关系的复杂化等因素，都可能导致情绪波动较大。如果缺乏有效的情绪管理能力，可能会出现焦虑、抑郁、冲动行为等问题，影响身心健康和社会适应能力。\                            </p>
+                        `,
+                        symptoms: [\                            '情绪波动大，容易从兴奋转为沮丧',\                            '对小事反应过度，容易发脾气或哭泣',\                            '长期感到焦虑、紧张或担忧',\                            '兴趣减退，对以前喜欢的事情不再热衷',\                            '睡眠问题，如失眠或过度睡眠'\                        ],\                        strategies: [\                            {
+                                title: '识别和接纳情绪',\                                content: '首先要学会识别自己的情绪，给情绪命名（如愤怒、焦虑、悲伤等），并接纳这些情绪的存在。情绪没有好坏之分，每一种情绪都是内心的信号，告诉我们需要关注什么。'\                            },\                            {
+                                title: '深呼吸和放松练习',\                                content: '当情绪激动时，可以尝试深呼吸练习：慢慢吸气4秒，屏住呼吸2秒，然后慢慢呼气6秒。重复几次，可以帮助平静情绪。此外，渐进式肌肉放松、冥想等方法也有助于缓解紧张和焦虑。'\                            },\                            {
+                                title: '积极的自我对话',\                                content: '注意自己的内心对话，用积极、理性的想法取代消极、非理性的想法。例如，把"我做不好"改为"我可以尝试，即使失败也是学习的机会"。'\                            },\                            {
+                                title: '寻找支持',\                                content: '不要独自承受情绪压力，寻找信任的人（如父母、老师、朋友）倾诉，或者寻求专业的心理咨询帮助。分享和支持可以帮助我们更好地应对情绪挑战。'\                            }\                        ],\                        resources: [\                            {
+                                title: '《我的情绪小怪兽》',\                                description: '适合青少年的情绪管理绘本',\                                image: 'https://picsum.photos/id/1059/600/400'\                            },\                            {
+                                title: '情绪健康测评',\                                description: '专业量表评估你的情绪状态',\                                image: 'https://picsum.photos/id/1048/600/400'\                            }\                        ]\                    },\                    'social': {
+                        title: '社交关系',
+                        breadcrumb: '社交关系',
+                        icon: 'fa-users',
+                        iconColor: 'accent',
+                        category: '人际关系',
+                        description: `\                            <p class="text-lg text-neutral mb-6">\                                社交关系是青少年成长过程中不可或缺的一部分。良好的社交关系可以提供情感支持、促进自我认同、培养沟通能力和团队合作精神，对青少年的心理健康和社会适应能力有着重要影响。\                            </p>
+                            <p class="text-lg text-neutral mb-6">\                                然而，青少年在社交过程中也可能面临各种挑战，如同伴压力、人际冲突、孤独感等。这些问题如果得不到有效解决，可能会影响青少年的自信心和幸福感，甚至导致心理健康问题。\                            </p>
+                        `,
+                        symptoms: [\                            '难以融入同伴群体，感到孤独',\                            '经常与同学或朋友发生冲突',\                            '过度在意他人评价，害怕被拒绝',\                            '在社交场合感到紧张、焦虑',\                            '缺乏自信，不敢表达自己的想法'\                        ],\                        strategies: [\                            {
+                                title: '培养同理心',\                                content: '尝试从他人的角度思考问题，理解他人的感受和需求。同理心可以帮助建立良好的人际关系，减少冲突。'\                            },\                            {
+                                title: '学习有效沟通',\                                content: '掌握积极倾听、清晰表达、尊重他人等沟通技巧。在表达自己的想法和感受时，要注意语气和方式，避免攻击性语言。'\                            },\                            {
+                                title: '建立边界意识',\                                content: '学会设定健康的人际边界，明确自己的需求和底线。不要为了迎合他人而牺牲自己的原则和感受。'\                            },\                            {
+                                title: '寻找志同道合的朋友',\                                content: '寻找兴趣相投、价值观相近的朋友，建立真诚、互信的友谊。高质量的友谊比数量更重要。'\                            }\                        ],\                        resources: [\                            {
+                                title: '《社交商》',\                                description: '提升社交能力的实用指南',\                                image: 'https://picsum.photos/id/1074/600/400'\                            },\                            {
+                                title: '沟通模拟器',\                                description: '通过情景模拟练习沟通技巧',\                                image: 'https://picsum.photos/id/1055/600/400'\                            }\                        ]\                    },\                    'academic': {
+                        title: '学业压力',
+                        breadcrumb: '学业压力',
+                        icon: 'fa-book',
+                        iconColor: 'red',
+                        category: '学习成长',
+                        description: `\                            <p class="text-lg text-neutral mb-6">\                                学业压力是青少年在学习过程中常见的心理负担，主要来自于考试成绩、升学竞争、家长期望、自我要求等多方面的压力源。适度的压力可以激发学习动力，但过度的压力则会影响身心健康和学习效率。\                            </p>
+                            <p class="text-lg text-neutral mb-6">\                                青少年正处于学业发展的关键时期，面对日益增加的学习任务和竞争压力，容易出现焦虑、失眠、注意力不集中、厌学等问题。长期处于高压力状态下，还可能导致心理问题和身体健康问题。\                            </p>
+                        `,
+                        symptoms: [\                            '感到紧张、焦虑，担心考试成绩',\                            '难以集中注意力，学习效率下降',\                            '失眠、多梦，睡眠质量下降',\                            '对学习失去兴趣，出现厌学情绪',\                            '出现身体不适，如头痛、胃痛等，但无器质性病变'\                        ],\                        strategies: [\                            {
+                                title: '设定合理目标',\                                content: '根据自己的实际情况设定可实现的学习目标，避免目标过高导致的挫败感。将大目标分解为小目标，逐步实现，增强成就感。'
+                            },\                            {
+                                title: '时间管理',\                                content: '制定合理的学习计划，合理安排学习和休息时间，避免拖延和过度劳累。学习时专注，休息时放松，提高学习效率。'
+                            },\                            {
+                                title: '积极的自我暗示',\                                content: '用积极的语言鼓励自己，如"我可以做到"、"我已经很努力了"等，取代消极的自我否定。培养自信，相信自己的能力。'
+                            },\                            {
+                                title: '寻求支持',\                                content: '与父母、老师或朋友沟通，分享自己的压力和困扰，寻求理解和支持。必要时，可以寻求专业的心理咨询帮助。'
+                            },\                            {
+                                title: '放松训练',\                                content: '学习和运用放松技巧，如深呼吸、冥想、瑜伽等，缓解紧张和焦虑情绪。适当的运动也有助于释放压力，改善心情。'
+                            }\                        ],\                        resources: [\                            {
+                                title: '《如何应对学习压力》',\                                description: '帮助青少年有效管理学业压力的实用指南',\                                image: 'https://picsum.photos/id/1067/600/400'
+                            },\                            {
+                                title: '时间管理工具包',\                                description: '包含各种时间管理方法和工具，帮助提高学习效率',\                                image: 'https://picsum.photos/id/1069/600/400'
+                            }\                        ]\                    },\                    // 可以继续添加其他问题的数据
+                };
+
+                // 如果问题存在，加载数据
+                if (problems[id]) {
+                    const problem = problems[id];
+
+                    // 更新页面标题
+                    document.title = `${problem.title} - 成长导航`;
+
+                    // 更新页面内容
+                    document.getElementById('problem-title').textContent = problem.title;
+                    document.getElementById('problem-breadcrumb').textContent = problem.breadcrumb;
+                    document.getElementById('problem-description').innerHTML = problem.description;
+                    document.getElementById('problem-category').textContent = problem.category;
+
+                    // 更新图标
+                    const iconContainer = document.getElementById('problem-icon-container');
+                    iconContainer.innerHTML = `\                        <div class="w-12 h-12 rounded-full bg-${problem.iconColor}/10 flex items-center justify-center text-${problem.iconColor} text-xl">\                            <i class="fa ${problem.icon}"></i>\                        </div>
+                        <div class="ml-4">\                            <span class="inline-block px-3 py-1 bg-${problem.iconColor}/10 text-${problem.iconColor} text-sm rounded-full" id="problem-category">${problem.category}</span>\                        </div>
+                    `;
+
+                    // 更新常见表现
+                    const symptomsContainer = document.getElementById('problem-symptoms');
+                    symptomsContainer.innerHTML = '';
+                    problem.symptoms.forEach(symptom => {
+                        symptomsContainer.innerHTML += `\                            <li class="flex items-start">\                                <i class="fa fa-check-circle text-secondary mt-1 mr-3"></i>\                                <span class="text-neutral">${symptom}</span>\                            </li>
+                        `;
+                    });
+
+                    // 更新应对策略
+                    const strategiesContainer = document.getElementById('problem-strategies');
+                    strategiesContainer.innerHTML = '';
+                    problem.strategies.forEach(strategy => {
+                        strategiesContainer.innerHTML += `\                            <div class="bg-white border border-gray-100 rounded-lg p-5 shadow-sm hover:shadow-md transition-custom">\                                <h3 class="font-semibold text-lg text-dark mb-2">${strategy.title}</h3>\                                <p class="text-neutral">${strategy.content}</p>\                            </div>
+                        `;
+                    });
+
+                    // 更新相关资源
+                    const resourcesContainer = document.getElementById('related-resources');
+                    resourcesContainer.innerHTML = '';
+                    problem.resources.forEach(resource => {
+                        resourcesContainer.innerHTML += `\                            <a href="index.html#resources" class="block bg-white border border-gray-100 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-custom group">\                                <div class="h-40 overflow-hidden">\                                    <img src="${resource.image}" alt="${resource.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">\                                </div>
+                                <div class="p-4">\                                    <h3 class="font-semibold text-dark mb-1">${resource.title}</h3>\                                    <p class="text-sm text-neutral mb-2">${resource.description}</p>\                                    <span class="inline-flex items-center text-primary text-sm font-medium">\                                        查看详情 <i class="fa fa-arrow-right ml-1"></i>\                                    </span>\                                </div>
+                            </a>
+                        `;
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
