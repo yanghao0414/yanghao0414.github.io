@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>青少年成长导航 - 陪伴青春期的你健康成长</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5', // 主色调：靛蓝色，代表信任和智慧
+                        secondary: '#EC4899', // 辅助色：粉色，代表关怀和温暖
+                        accent: '#10B981', // 强调色：绿色，代表成长和希望
+                        neutral: '#6B7280', // 中性色：灰色，用于文本
+                        light: '#F9FAFB', // 浅色背景
+                        dark: '#1F2937'  // 深色文本
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .transition-custom {
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+        }
+    </style>
+</head>
+<body class="bg-light text-dark font-sans">
+    <!-- 导航栏 -->
+    <header id="navbar" class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50 transition-custom">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center space-x-2">
+                        <i class="fa fa-leaf text-primary text-2xl"></i>
+                        <span class="text-xl font-bold text-primary">成长导航</span>
+                    </a>
+                </div>
+                <!-- 桌面导航 -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-neutral hover:text-primary font-medium transition-custom">首页</a>
+                    <a href="#issues" class="text-neutral hover:text-primary font-medium transition-custom">成长问题</a>
+                    <a href="#tools" class="text-neutral hover:text-primary font-medium transition-custom">互动工具</a>
+                    <a href="#resources" class="text-neutral hover:text-primary font-medium transition-custom">资源库</a>
+                    <a href="#about" class="text-neutral hover:text-primary font-medium transition-custom">关于我们</a>
+                </nav>
+                <!-- 联系按钮 -->
+                <div class="hidden md:block">
+                    <a href="#contact" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-custom">
+                        寻求帮助
+                    </a>
+                </div>
+                <!-- 移动端菜单按钮 -->
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-neutral hover:text-primary focus:outline-none">
+                        <i class="fa fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute w-full">
+            <div class="px-4 py-3 space-y-3">
+                <a href="#home" class="block text-neutral hover:text-primary font-medium py-2 transition-custom">首页</a>
+                <a href="#issues" class="block text-neutral hover:text-primary font-medium py-2 transition-custom">成长问题</a>
+                <a href="#tools" class="block text-neutral hover:text-primary font-medium py-2 transition-custom">互动工具</a>
+                <a href="#resources" class="block text-neutral hover:text-primary font-medium py-2 transition-custom">资源库</a>
+                <a href="#about" class="block text-neutral hover:text-primary font-medium py-2 transition-custom">关于我们</a>
+                <a href="#contact" class="block bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-center transition-custom">寻求帮助</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-br from-primary/5 to-secondary/5">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 md:pr-12 mb-10 md:mb-0">
+                    <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-dark leading-tight mb-4">
+                        陪伴你<br><span class="text-primary">健康成长</span>的每一步
+                    </h1>
+                    <p class="text-lg text-neutral mb-8 max-w-lg">
+                        青春期是人生重要的成长阶段，我们提供专业的指导和支持，帮助你应对成长中的各种挑战，成为更好的自己。
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#issues" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg text-center transition-custom">
+                            探索成长问题
+                        </a>
+                        <a href="#tools" class="bg-white hover:bg-gray-50 text-primary border border-primary px-6 py-3 rounded-lg shadow-sm hover:shadow-md text-center transition-custom">
+                            使用互动工具
+                        </a>
+                    </div>
+                    <div class="mt-10 flex items-center space-x-6">
+                        <div class="flex -space-x-2">
+                            <img src="https://picsum.photos/id/64/40/40" alt="用户头像" class="w-10 h-10 rounded-full border-2 border-white">
+                            <img src="https://picsum.photos/id/65/40/40" alt="用户头像" class="w-10 h-10 rounded-full border-2 border-white">
+                            <img src="https://picsum.photos/id/66/40/40" alt="用户头像" class="w-10 h-10 rounded-full border-2 border-white">
+                        </div>
+                        <div>
+                            <div class="flex items-center mb-1">
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <i class="fa fa-star text-yellow-400"></i>
+                                <i class="fa fa-star-half-o text-yellow-400"></i>
+                                <span class="ml-2 font-medium">4.8/5</span>
+                            </div>
+                            <p class="text-sm text-neutral">来自1000+青少年的好评</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl transform transition-transform hover:scale-[1.02] duration-500">
+                        <img src="https://picsum.photos/id/237/800/600" alt="青少年成长" class="w-full h-auto">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6 text-white">
+                            <p class="text-lg font-medium">"每个青少年都值得被理解和支持"</p>
+                        </div>
+                    </div>
+                    <!-- 装饰元素 -->
+                    <div class="absolute -top-6 -right-6 w-32 h-32 bg-secondary/20 rounded-full blur-2xl"></div>
+                    <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/20 rounded-full blur-2xl"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 成长问题分类 -->
+    <section id="issues" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">常见成长问题</h2>
+                <p class="text-lg text-neutral max-w-2xl mx-auto">
+                    青春期是充满变化的时期，我们整理了青少年常见的成长问题，帮助你更好地认识和应对这些挑战
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 问题卡片 1 -->
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/201/600/400" alt="学业压力" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                                <i class="fa fa-book"></i>
+                            </div>
+                            <h3 class="ml-3 text-xl font-semibold text-dark">学业压力</h3>
+                        </div>
+                        <p class="text-neutral mb-4">
+                            如何平衡学习与休息，应对考试焦虑，建立有效的学习方法，提升学习效率。
+                        </p>
+                        <a href="#" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
+                            了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 问题卡片 2 -->
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/1027/600/400" alt="情绪管理" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+                                <i class="fa fa-heart"></i>
+                            </div>
+                            <h3 class="ml-3 text-xl font-semibold text-dark">情绪管理</h3>
+                        </div>
+                        <p class="text-neutral mb-4">
+                            认识和接纳自己的情绪，学习有效的情绪调节方法，应对压力、焦虑和抑郁等情绪问题。
+                        </p>
+                        <a href="#" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
+                            了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 问题卡片 3 -->
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/1074/600/400" alt="社交关系" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center text-accent">
+                                <i class="fa fa-users"></i>
+                            </div>
+                            <h3 class="ml-3 text-xl font-semibold text-dark">社交关系</h3>
+                        </div>
+                        <p class="text-neutral mb-4">
+                            建立健康的人际关系，处理同伴压力，解决冲突，提升沟通能力和人际交往技巧。
+                        </p>
+                        <a href="#" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
+                            了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 问题卡片 4 -->
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/1080/600/400" alt="家庭沟通" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">
+                                <i class="fa fa-home"></i>
+                            </div>
+                            <h3 class="ml-3 text-xl font-semibold text-dark">家庭沟通</h3>
+                        </div>
+                        <p class="text-neutral mb-4">
+                            改善与父母的沟通，理解家庭角色变化，处理家庭冲突，建立相互尊重的家庭关系。
+                        </p>
+                        <a href="#" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
+                            了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 问题卡片 5 -->
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/1062/600/400" alt="自我认知" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-amber-600">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <h3 class="ml-3 text-xl font-semibold text-dark">自我认知</h3>
+                        </div>
+                        <p class="text-neutral mb-4">
+                            认识自己的兴趣、优势和价值观，建立自信，设定人生目标，规划未来发展方向。
+                        </p>
+                        <a href="#" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
+                            了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 问题卡片 6 -->
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden group">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/1059/600/400" alt="网络使用" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                                <i class="fa fa-mobile"></i>
+                            </div>
+                            <h3 class="ml-3 text-xl font-semibold text-dark">网络使用</h3>
+                        </div>
+                        <p class="text-neutral mb-4">
+                            合理安排上网时间，识别网络风险，避免网络沉迷，保护个人信息和网络安全。
+                        </p>
+                        <a href="#" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
+                            了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 互动工具区域 -->
+    <section id="tools" class="py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">互动成长工具</h2>
+                <p class="text-lg text-neutral max-w-2xl mx-auto">
+                    通过互动工具探索自我，获取个性化的成长建议，让成长之路更加清晰
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 工具卡片 1 -->
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom overflow-hidden flex flex-col md:flex-row">
+                    <div class="md:w-2/5 h-48 md:h-auto">
+                        <img src="https://picsum.photos/id/1048/400/600" alt="情绪测评" class="w-full h-full object-cover">
+                    </div>
+                    <div class="md:w-3/5 p-6 flex flex-col">
+                        <h3 class="text-xl font-semibold text-dark mb-2">情绪健康测评</h3>
+                        <p class="text-neutral mb-4 flex-grow">
+                            通过专业量表评估你的情绪状态，了解自己的情绪健康水平，获取个性化的调节建议。
+                        </p>
+                        <button class="mt-auto bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg shadow-sm hover:shadow transition-custom w-full md:w-auto">
+                            开始测评
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 工具卡片 2 -->
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom overflow-hidden flex flex-col md:flex-row">
+                    <div class="md:w-2/5 h-48 md:h-auto">
+                        <img src="https://picsum.photos/id/1058/400/600" alt="成长规划" class="w-full h-full object-cover">
+                    </div>
+                    <div class="md:w-3/5 p-6 flex flex-col">
+                        <h3 class="text-xl font-semibold text-dark mb-2">成长规划师</h3>
+                        <p class="text-neutral mb-4 flex-grow">
+                            基于你的兴趣和优势，帮助你设定短期和长期目标，制定个性化的成长计划和行动步骤。
+                        </p>
+                        <button class="mt-auto bg-secondary hover:bg-secondary/90 text-white px-4 py-2 rounded-lg shadow-sm hover:shadow transition-custom w-full md:w-auto">
+                            制定计划
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 工具卡片 3 -->
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom overflow-hidden flex flex-col md:flex-row">
+                    <div class="md:w-2/5 h-48 md:h-auto">
+                        <img src="https://picsum.photos/id/1055/400/600" alt="沟通模拟器" class="w-full h-full object-cover">
+                    </div>
+                    <div class="md:w-3/5 p-6 flex flex-col">
+                        <h3 class="text-xl font-semibold text-dark mb-2">沟通模拟器</h3>
+                        <p class="text-neutral mb-4 flex-grow">
+                            通过情景模拟练习沟通技巧，学习如何表达自己的想法和感受，提高人际交往能力。
+                        </p>
+                        <button class="mt-auto bg-accent hover:bg-accent/90 text-white px-4 py-2 rounded-lg shadow-sm hover:shadow transition-custom w-full md:w-auto">
+                            开始练习
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 工具卡片 4 -->
+                <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition-custom overflow-hidden flex flex-col md:flex-row">
+                    <div class="md:w-2/5 h-48 md:h-auto">
+                        <img src="https://picsum.photos/id/1071/400/600" alt="压力管理" class="w-full h-full object-cover">
+                    </div>
+                    <div class="md:w-3/5 p-6 flex flex-col">
+                        <h3 class="text-xl font-semibold text-dark mb-2">压力管理工具箱</h3>
+                        <p class="text-neutral mb-4 flex-grow">
+                            探索各种压力缓解方法，包括呼吸练习、冥想指导和放松技巧，帮助你有效应对压力。
+                        </p>
+                        <button class="mt-auto bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg shadow-sm hover:shadow transition-custom w-full md:w-auto">
+                            探索工具
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 资源库区域 -->
+    <section id="resources" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">成长资源库</h2>
+                <p class="text-lg text-neutral max-w-2xl mx-auto">
+                    精选的文章、视频和书籍，帮助你深入了解青少年成长的各个方面
+                </p>
+            </div>
+
+            <div class="mb-8 flex flex-wrap justify-center gap-4">
+                <button class="resource-filter active bg-primary text-white px-4 py-2 rounded-full text-sm" data-filter="all">全部资源</button>
+                <button class="resource-filter bg-gray-100 hover:bg-gray-200 text-neutral px-4 py-2 rounded-full text-sm" data-filter="articles">文章</button>
+                <button class="resource-filter bg-gray-100 hover:bg-gray-200 text-neutral px-4 py-2 rounded-full text-sm" data-filter="videos">视频</button>
+                <button class="resource-filter bg-gray-100 hover:bg-gray-200 text-neutral px-4 py-2 rounded-full text-sm" data-filter="books">书籍</button>
+                <button class="resource-filter bg-gray-100 hover:bg-gray-200 text-neutral px-4 py-2 rounded-full text-sm" data-filter="tools">实用工具</button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 资源卡片 1 -->
+                <div class="resource-card bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden" data-category="articles">
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-neutral mb-3">
+                            <i class="fa fa-file-text-o mr-2"></i>
+                            <span>文章</span>
+                            <span class="mx-2">•</span>
+                            <span>5分钟阅读</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-dark mb-2 hover:text-primary transition-custom">如何应对考试焦虑</h3>
+                        <p class="text-neutral mb-4">
+                            考试焦虑是青少年常见的问题，本文介绍了有效的应对策略，帮助你在考试中保持冷静和专注。
+                        </p>
+                        <a href="#" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
+                            阅读全文 <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 资源卡片 2 -->
+                <div class="resource-card bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden" data-category="videos">
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-neutral mb-3">
+                            <i class="fa fa-play-circle-o mr-2"></i>
+                            <span>视频</span>
+                            <span class="mx-2">•</span>
+                            <span>10分钟观看</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-dark mb-2 hover:text-primary transition-custom">青春期心理健康指南</h3>
+                        <p class="text-neutral mb-4">
+                            由心理学专家讲解青春期常见的心理变化和挑战，提供实用的自我关怀建议。
+                        </p>
+                        <a href="#" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
+                            观看视频 <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 资源卡片 3 -->
+                <div class="resource-card bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden" data-category="books">
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-neutral mb-3">
+                            <i class="fa fa-book mr-2"></i>
+                            <span>书籍</span>
+                            <span class="mx-2">•</span>
+                            <span>推荐阅读</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-dark mb-2 hover:text-primary transition-custom">《青春期的烦恼》</h3>
+                        <p class="text-neutral mb-4">
+                            一本专为青少年编写的成长指南，通过真实故事和专业建议，帮助你顺利度过青春期。
+                        </p>
+                        <a href="#" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
+                            了解更多 <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 资源卡片 4 -->
+                <div class="resource-card bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden" data-category="tools">
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-neutral mb-3">
+                            <i class="fa fa-wrench mr-2"></i>
+                            <span>实用工具</span>
+                            <span class="mx-2">•</span>
+                            <span>可下载</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-dark mb-2 hover:text-primary transition-custom">每日情绪日记模板</h3>
+                        <p class="text-neutral mb-4">
+                            记录和追踪你的情绪变化，帮助你更好地了解自己的情绪模式，提高情绪管理能力。
+                        </p>
+                        <a href="#" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
+                            下载模板 <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 资源卡片 5 -->
+                <div class="resource-card bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden" data-category="articles">
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-neutral mb-3">
+                            <i class="fa fa-file-text-o mr-2"></i>
+                            <span>文章</span>
+                            <span class="mx-2">•</span>
+                            <span>8分钟阅读</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-dark mb-2 hover:text-primary transition-custom">建立健康的社交边界</h3>
+                        <p class="text-neutral mb-4">
+                            学习如何设定和维护健康的社交边界，保护自己的情感空间，建立更加健康的人际关系。
+                        </p>
+                        <a href="#" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
+                            阅读全文 <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 资源卡片 6 -->
+                <div class="resource-card bg-white rounded-xl shadow-md hover:shadow-xl transition-custom border border-gray-100 overflow-hidden" data-category="videos">
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-neutral mb-3">
+                            <i class="fa fa-play-circle-o mr-2"></i>
+                            <span>视频</span>
+                            <span class="mx-2">•</span>
+                            <span>15分钟观看</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-dark mb-2 hover:text-primary transition-custom">与父母有效沟通的技巧</h3>
+                        <p class="text-neutral mb-4">
+                            通过角色扮演和实际案例，学习如何与父母进行有效的沟通，减少家庭冲突。
+                        </p>
+                        <a href="#" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
+                            观看视频 <i class="fa fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-white border border-primary text-primary hover:bg-primary/5 px-6 py-3 rounded-lg shadow-sm hover:shadow transition-custom">
+                    查看更多资源 <i class="fa fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 寻求帮助区域 -->
+    <section id="contact" class="py-16 md:py-24 bg-gradient-to-br from-primary/5 to-secondary/5">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="flex flex-col md:flex-row">
+                    <div class="md:w-1/2 bg-primary p-8 text-white flex flex-col justify-center">
+                        <h2 class="text-2xl font-bold mb-4">需要帮助？</h2>
+                        <p class="mb-6">
+                            如果你正在经历困难或有任何问题，我们的专业团队随时准备为你提供支持和帮助。
+                        </p>
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-start">
+                                <i class="fa fa-envelope-o mt-1 mr-3 text-xl"></i>
+                                <div>
+                                    <h3 class="font-medium">电子邮件</h3>
+                                    <p class="text-white/80">support@chengzhangdaohang.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fa fa-phone mt-1 mr-3 text-xl"></i>
+                                <div>
+                                    <h3 class="font-medium">热线电话</h3>
+                                    <p class="text-white/80">400-123-4567</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fa fa-clock-o mt-1 mr-3 text-xl"></i>
+                                <div>
+                                    <h3 class="font-medium">服务时间</h3>
+                                    <p class="text-white/80">周一至周日 9:00-21:00</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-custom">
+                                <i class="fa fa-weixin"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-custom">
+                                <i class="fa fa-weibo"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-custom">
+                                <i class="fa fa-qq"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-8">
+                        <h3 class="text-xl font-semibold text-dark mb-6">发送消息</h3>
+                        <form id="contact-form">
+                            <div class="mb-4">
+                                <label for="name" class="block text-sm font-medium text-neutral mb-1">姓名</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-custom" placeholder="你的名字">
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-sm font-medium text-neutral mb-1">电子邮件</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-custom" placeholder="your@email.com">
+                            </div>
+                            <div class="mb-4">
+                                <label for="subject" class="block text-sm font-medium text-neutral mb-1">主题</label>
+                                <select id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-custom">
+                                    <option value="emotional">情绪问题</option>
+                                    <option value="academic">学业压力</option>
+                                    <option value="social">社交关系</option>
+                                    <option value="family">家庭沟通</option>
+                                    <option value="other">其他问题</option>
+                                </select>
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-sm font-medium text-neutral mb-1">消息内容</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-custom" placeholder="请详细描述你的问题或需求..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white px-4 py-3 rounded-lg shadow-sm hover:shadow transition-custom">
+                                发送消息
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们区域 -->
+    <section id="about" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 md:pr-12 mb-10 md:mb-0">
+                    <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold text-dark mb-4">关于成长导航</h2>
+                    <p class="text-neutral mb-6">
+                        成长导航是一个专注于青少年成长问题的公益平台，由一群心理学、教育学和社会工作领域的专业人士创立。我们致力于为青少年提供科学、专业的成长指导和支持。
+                    </p>
+                    <p class="text-neutral mb-6">
+                        我们相信每个青少年都有成长的潜力，通过提供专业的资源和支持，帮助他们更好地认识自己，应对成长中的挑战，成为健康、自信、有责任感的成年人。
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="text-3xl font-bold text-primary mb-1">5000+</h3>
+                            <p class="text-neutral">青少年用户</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="text-3xl font-bold text-primary mb-1">100+</h3>
+                            <p class="text-neutral">专业资源</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="text-3xl font-bold text-primary mb-1">50+</h3>
+                            <p class="text-neutral">专家团队</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="text-3xl font-bold text-primary mb-1">98%</h3>
+                            <p class="text-neutral">用户满意度</p>
+                        </div>
+                    </div>
+                    <a href="#" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-custom">
+                        了解更多关于我们 <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/1083/800/600" alt="关于我们" class="rounded-xl shadow-lg">
+                        <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-md">
+                            <div class="flex items-center">
+                                <div class="text-primary text-3xl font-bold mr-3">98%</div>
+                                <div>
+                                    <div class="flex items-center">
+                                        <i class="fa fa-star text-yellow-400"></i>
+                                        <i class="fa fa-star text-yellow-400"></i>
+                                        <i class="fa fa-star text-yellow-400"></i>
+                                        <i class="fa fa-star text-yellow-400"></i>
+                                        <i class="fa fa-star-half-o text-yellow-400"></i>
+                                    </div>
+                                    <p class="text-sm text-neutral">用户满意度</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white pt-16 pb-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fa fa-leaf text-primary text-2xl"></i>
+                        <span class="text-xl font-bold">成长导航</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        陪伴青少年健康成长的专业平台，提供科学的指导和支持。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-custom">
+                            <i class="fa fa-weixin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-custom">
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-custom">
+                            <i class="fa fa-qq"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-custom">
+                            <i class="fa fa-youtube-play"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-custom">首页</a></li>
+                        <li><a href="#issues" class="text-gray-400 hover:text-white transition-custom">成长问题</a></li>
+                        <li><a href="#tools" class="text-gray-400 hover:text-white transition-custom">互动工具</a></li>
+                        <li><a href="#resources" class="text-gray-400 hover:text-white transition-custom">资源库</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-custom">关于我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">帮助中心</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-custom">常见问题</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-custom">使用指南</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-custom">隐私政策</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-custom">服务条款</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-custom">联系我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">订阅通讯</h3>
+                    <p class="text-gray-400 mb-4">
+                        订阅我们的通讯，获取最新的成长资讯和资源。
+                    </p>
+                    <form class="mb-4">
+                        <div class="flex">
+                            <input type="email" placeholder="你的邮箱地址" class="px-4 py-2 rounded-l-lg w-full focus:outline-none text-dark">
+                            <button type="submit" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-r-lg transition-custom">
+                                订阅
+                            </button>
+                        </div>
+                    </form>
+                    <p class="text-gray-500 text-sm">
+                        我们尊重你的隐私，不会向第三方分享你的信息。
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; 2023 成长导航 - 所有权利保留</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 bg-primary hover:bg-primary/90 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300 z-50">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
